@@ -1,13 +1,14 @@
+// const queries = require('./src/utils/algolia')
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
-// require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `renderbus`,
+    description: `renderbus`,
+    author: `karine`,
+    siteUrl:`http:kokoko.gq`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -39,6 +40,16 @@ module.exports = {
         accessToken: process.env.ACCESS_TOKEN || '',
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-algolia`,
+    //   options: {
+    //     appId: process.env.ALGOLIA_APP_ID || '',
+    //     apiKey: process.env.ALGOLIA_SEARCH_KEY || '',
+    //     queries,
+    //     chunkSize: 10000,
+    //   }
+    // },
+    `gatsby-plugin-styled-components`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // 'gatsby-plugin-offline',

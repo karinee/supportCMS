@@ -1,6 +1,12 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+// import Search from "./Search"
+
+// const searchIndices = [
+//   { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
+//   { name: `Posts`, title: `Blog Posts`, hitComp: `PostHit` },
+// ]
 
 const Header = ({ siteTitle }) => (
   <header
@@ -40,3 +46,5 @@ Header.defaultProps = {
 }
 
 export default Header
+
+ /* <Search collapse indices={searchIndices} /> */
