@@ -110,7 +110,7 @@ export const HitsWrapper = styled.div`
   ul {
     list-style: none;
   }
-  mark {
+  post {
     color: ${props => props.theme.lightBlue};
     background: ${props => props.theme.darkBlue};
   }

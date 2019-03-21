@@ -1,11 +1,15 @@
 import React, { Fragment } from "react"
 import Sidebar from "../components/Sidebar"
+import Layout from "../components/layout"
+import { graphql } from "gatsby"
 
 export default ({data}) => (
-  <Fragment>
-    <Sidebar/>
-    <p>{data.contentfulPost.title}</p>
-  </Fragment>
+  <Layout>
+    <Fragment>
+      <Sidebar/>
+      <p>{data.contentfulPost.title}</p>
+    </Fragment>
+  </Layout>
 )
 
 export const postQuery = graphql`

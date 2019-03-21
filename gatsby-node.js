@@ -51,7 +51,6 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         if (result.errors) {
           reject(result.errors)
         }
-        debugger
         result.data.allContentfulPost.edges.forEach((edge) => {
           let slug = 'support'
           if (edge.node.catalogue) {

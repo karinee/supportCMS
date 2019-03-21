@@ -1,4 +1,4 @@
-// const queries = require('./src/utils/algolia')
+const queries = require('./src/utils/algolia')
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
@@ -36,19 +36,20 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: process.env.SPACE_ID || '',
-        accessToken: process.env.ACCESS_TOKEN || '',
+        spaceId: process.env.SPACE_ID,
+        accessToken: process.env.ACCESS_TOKEN,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-algolia`,
-    //   options: {
-    //     appId: process.env.ALGOLIA_APP_ID || '',
-    //     apiKey: process.env.ALGOLIA_SEARCH_KEY || '',
-    //     queries,
-    //     chunkSize: 10000,
-    //   }
-    // },
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_SEARCH_KEY,
+        indexName: process.env.ALGOLIA_INDEX_NAME,
+        queries,
+        chunkSize: 10000,
+      }
+    },
     `gatsby-plugin-styled-components`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

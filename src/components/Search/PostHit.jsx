@@ -1,32 +1,64 @@
-import React, { Fragment } from "react"
-import { Highlight, Snippet } from "react-instantsearch-dom"
-import { Link } from "gatsby"
-import { Calendar } from "styled-icons/octicons/Calendar"
-import { Tags } from "styled-icons/fa-solid/Tags"
+// import React from "react"
+// // import { connectHits } from "react-instantsearch-dom"
 
-const PostHit = clickHandler => ({ hit }) => (
-  <div>
-    <Link to={`/blog/` + hit.slug} onClick={clickHandler}>
-      <h3>
-        <Highlight attribute="title" hit={hit} tagName="mark" />
-      </h3>
-    </Link>
-    <div>
-      <Calendar size="1em" />
-      &nbsp;
-      <Highlight attribute="date" hit={hit} tagName="mark" />
-      &emsp;
-      <Tags size="1em" />
-      &nbsp;
-      {hit.tags.map((tag, index) => (
-        <Fragment key={tag}>
-          {index > 0 && ", "}
-          <Link to={`blog/` + tag.toLowerCase().replace(` `, `-`)}>{tag}</Link>
-        </Fragment>
-      ))}
-    </div>
-    <Snippet attribute="excerpt" hit={hit} tagName="mark" />
-  </div>
-)
+// const postHit = ({hits}) => (
+  // <ol>
+  //   {hits.map(hit => (
+  //     <li key={hit.objectID}>
+  //       <h3>
+  //         <p>{hit.objectID}</p>
+  //         <p>{hit}</p>
+  //       </h3>
+  //     </li>
+  //   ))}
+  // </ol>
+// )
+// // const PostHit = connectHits(postHit)
+// export default postHit
 
-export default PostHit
+// import React from 'react';
+
+// //Import Components
+// import {connectHits} from 'react-instantsearch/connectors';
+// import Product from './Product'
+
+// const MyHits = (props)  => {
+//     const items = props.hits.map(hit => <Product hit={hit} />)
+//     return (
+//         <div>
+//             {items}
+//         </div>
+//     )
+// }
+
+
+// export default connectHits(MyHits);
+
+
+import React, { Component } from "react"
+
+const flatten = obj => 
+  {
+    if (obj) {
+      return obj['en-US']
+    }
+    return obj
+  }
+export default class MyHits extends Component {
+  render() {
+    const { hits } = this.props
+    console.log('hits: ', hits)
+    const result = hits.map(hit => 
+      <li key={hit.objectID}>
+        <h3>
+          <p>{flatten(hit.fields.title)}</p>
+        </h3>
+      </li>
+    )
+    return (
+      <ol>
+        {result}
+      </ol>
+    )
+  }
+}
