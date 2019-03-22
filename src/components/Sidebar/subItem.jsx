@@ -3,7 +3,11 @@ import { Link } from "gatsby"
 
 const SubItem = ({title, tertiaryCategory, toLink}) => (
   <li>
-    <Link to={toLink} activeStyle={{color: "red"}}>
+    <Link 
+      to={toLink} 
+      activeStyle={{color: "red"}}
+      partiallyActive={true}
+    >
       {title}
     </Link>
     {tertiaryCategory ?
